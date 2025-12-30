@@ -8,12 +8,17 @@
   <dd>{{ age() }}</dd>
 
   <td>Método:</td>
-  <dd>{{ getHeroDescription() }}</dd>
+  <dd>{{ HeroDescription() }}</dd>
 
   <td>Capitalizado:</td>
-  <dd>{{ name().toLocaleUpperCase() }}</dd>
-  <!-- ! Intentar  -->
-  <!-- <dd> {{ 'Mostrar nombre TODO EN MAYÚSCULAS' }} </dd> -->
+  <!--Capitalizacion mediante funcion -->
+  <!--<dd>{{ name().toUpperCase() }}</dd>-->
+  
+  <!--Capitalizacion con señal computada-->
+  <dd>{{ capitalizedName() }}</dd>
+  
+  <!--PIPES-->
+  <dd>{{ name() | uppercase}}</dd>
 </dl>
 
 <button (click)="changeHero()" class="btn btn-primary mx-2">
