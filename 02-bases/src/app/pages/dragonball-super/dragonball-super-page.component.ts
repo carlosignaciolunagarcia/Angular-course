@@ -1,43 +1,22 @@
-import { NgClass } from '@angular/common';
-import { Component, computed, signal } from '@angular/core';
-
-interface Character {
-  id: number;
-  name: string;
-  power: number;
-}
+import { Component, inject } from '@angular/core';
+import { CharacterList } from '../../components/dragonball/character-list/character-list';
+import { DragonballCharacterAdd } from '../../components/dragonball-character-add/dragonball-character-add';
+import { DragonballService } from '../../services/dragonball.service';
 
 @Component({
   templateUrl: './dragonball-super-page.component.html',
+  imports: [CharacterList,DragonballCharacterAdd],
 })
 
 export class DragonballSuperPageComponent {
-
-  name =signal('');
-  power =signal(0);
-
-  //signal de tipo arreglo
-  characters = signal<Character[]>([
-    { id: 1, name: 'Goku', power: 9001 },
-    { id: 2, name: 'Vegeta', power: 8000 }
-  ]);
+  //formas de inyeccion de dependencia(servicio)
   
-  addCharacter(){
-    if(!this.name||!this.power){
-      return;
-    }else{
-      const newCharacter:Character={
-        id: this.characters().length+1,
-        name: this.name(),
-        power: this.power(),
-      }
-      this.characters.update((list) => [...list, newCharacter]);
-      this.resetFields();
-    }
+  //forma 1: inyeccion via constructor
+  /*
+  constructor(public dragonballService: DragonballService) {
   }
+  */
+ //forma2: inyeccion via del inject()
+  public dragonballService = inject(DragonballService);
 
-  resetFields(){
-    this.name.set('');
-    this.power.set(0);
-  }
 }
