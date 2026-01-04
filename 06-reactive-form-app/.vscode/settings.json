@@ -1,0 +1,11 @@
+{
+    "angular-schematics.schematicsDefaultOptions": {
+        "@schematics/angular:component": {
+            "type": "component"
+        },
+        "angular-*": {
+            "externalTemplate": true,
+            "skipStyle": true
+        }
+    }
+}
